@@ -1,0 +1,70 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav>
+        <a href="formulario.html">Formulário</a>
+        <a href="registros.html">Registros</a>
+    </nav>
+    <h1>Cadastro de Alunos</h1>
+    <div id="AlertaMensagem" class="Alerta"></div>
+
+    <form id="estudantesForm">
+        <div class="formGrupo">
+            <label for="nome">Nome do aluno</label>
+            <input type="text" id="nome" placeholder="Ex: " required>
+        </div>
+
+        <div class="formGrupo">
+            <label for="idade">Idade</label>
+            <input type="number" id="idade" min="1" max="100" placeholder="Ex: 18" required>
+        </div>
+
+        <div class="formGrupo">
+            <label for="cursos">Curso</label>
+            <select id="cursos" required>
+                <option value="">Selecione um curso</option>
+                <option value="desenvolvimento de sistemas">Desenvolvimento de Sistemas</option>
+                <option value="Administração">Administração</option>
+                <option value="Logística">Logística</option>
+                <option value="Redes de Computadores">Redes de Computadores</option>
+            </select>
+        </div>
+
+        <div class="formGrupo">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" placeholder="ClebimDaHornet@gmail.com" required>
+        </div>
+
+        <button onclick="cadastrarAluno()">Cadastrar</button>
+    </form>
+    <div class="clock-conteiner">
+        <div class="tabela-Container">
+            <h2>Tabela de alunos cadastrados</h2>
+            <table id="alunosCadastrados">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Idade</th>
+                        <th>Curso</th>
+                        <th>E-mail</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+
+                </tbody>
+            </table>
+            <p id="SemMensagem" class="Sem-Mensagem">Nenhum cadastro</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
