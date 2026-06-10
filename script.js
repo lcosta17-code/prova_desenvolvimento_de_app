@@ -2,7 +2,7 @@ const AlertaMensagem = document.getElementById('AlertaMensagem');
 const estudantesForm = document.getElementById('estudantesForm');
 const nome = document.getElementById('nome');
 const idade = document.getElementById('idade');
-const curso = document.getElementById('curso');
+const curso = document.getElementById('cursos');
 const email = document.getElementById('email');
 const alunosCadastrados = document.getElementById('alunosCadastrados');
 const tbody = document.getElementById('tbody');
@@ -12,15 +12,15 @@ const formGrupo = document.querySelectorAll('formGrupo');
 const alunos = [];
 
 function cadastrarAluno(){
-    const nome = nome.value
-    const idade = idade.value
-    const curso = curso.value
-
+    const nomeV = nome.value
+    const idadeV = idade.value
+    const cursoV = curso.value
+    const emailV = email.value
     const aluno = {
-        nome: nome,
-        idade: idade,
-        curso: curso,
-        email: email
+        nome: nomeV,
+        idade: idadeV,
+        curso: cursoV,
+        email: emailV
     };
     alunos.push(aluno);
 
