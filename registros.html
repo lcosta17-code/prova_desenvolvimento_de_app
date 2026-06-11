@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema da Escola</title>
+    <title>Sistema da Escola - Registros</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="registro.css">
 </head>
@@ -15,8 +15,15 @@
         <a href="registros.html">Registros</a>
         <a href="estatistica.html">Estatísticas</a>
     </nav>
+    
     <div class="clock-conteiner">
+        <!-- Botão de PDF posicionado de forma limpa no topo da área de registros -->
+        <button onclick="gerarPDF()" style="margin-bottom: 20px; padding: 10px 20px; cursor: pointer; font-weight: bold;">
+            Gerar Relatório PDF
+        </button>
+
         <input type="text" id="pesquisa" placeholder="Pesquisar aluno...">
+        
         <div class="tabela-Container">
             <h2>Tabela de alunos cadastrados</h2>
             <table id="alunosCadastrados">
@@ -26,14 +33,16 @@
                         <th>Idade</th>
                         <th>Curso</th>
                         <th>E-mail</th>
-                        <th></th>
+                        <th>Nota</th>
+                        <th>Presença</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody id="tbody">
-
+                    <!-- O JavaScript injetará as linhas aqui dentro -->
                 </tbody>
             </table>
-            <p id="Mensagem" >Nenhum cadastro</p>
+            <p id="Mensagem">Nenhum cadastro</p>
         </div>
     </div>
 
