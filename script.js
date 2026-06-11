@@ -121,7 +121,7 @@ function calcularEstatisticas() {
 
     if (total > 0) {
         const somaIdades = alunos.reduce((acumulador, usuario) => {
-            return acumulador + usuario.idade;
+            return acumulador + Number(usuario.idade);
         }, 0);
 
         media = (somaIdades / total).toFixed(1);
