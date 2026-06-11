@@ -1,3 +1,9 @@
+document.getElementById("loginForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    window.location.href = "formulario.html";
+});
+
 const estudantesForm = document.getElementById("estudantesForm");
 const nome = document.getElementById("nome");
 const idade = document.getElementById("idade");
