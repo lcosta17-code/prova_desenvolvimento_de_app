@@ -5,12 +5,17 @@ const curso = document.getElementById("cursos");
 const email = document.getElementById("email");
 const tbody = document.getElementById("tbody");
 const pesquisa = document.getElementById("pesquisa");
+const SemMensagem = document.getElementById("Mensagem");
 
 // Carrega os alunos salvos
 const alunos = JSON.parse(localStorage.getItem("alunos")) || [];
 
-// Mostra os alunos ao abrir a página
-adicionarTabela();
+// MUDANÇA: Só tenta desenhar a tabela ou carregar estatísticas se os elementos existirem na página atual
+if (tbody) {
+    adicionarTabela();
+} else if (document.getElementById('totalAlunos')) {
+    calcularEstatisticas();
+}
 
 function cadastrarAluno() {
 
@@ -26,7 +31,7 @@ function cadastrarAluno() {
 
     const aluno = {
         nome: nomeV,
-        idade: idadeV,
+        idade: Number(idadeV),
         curso: cursoV,
         email: emailV
     };
@@ -37,7 +42,6 @@ function cadastrarAluno() {
     // Salva no LocalStorage
     localStorage.setItem("alunos", JSON.stringify(alunos));
 
-    // Atualiza tabela
     adicionarTabela();
 
     // Limpa formulário
@@ -67,6 +71,14 @@ function adicionarTabela(lista = alunos) {
         `;
 
     });
+
+    if (SemMensagem) {
+        if (lista.length === 0) {
+            SemMensagem.classList.remove('Mensagem');
+        } else {
+            SemMensagem.classList.add('Mensagem');
+        }
+    }
 }
 
 function excluirAluno(indice) {
@@ -81,7 +93,10 @@ function excluirAluno(indice) {
     }
 }
 
-pesquisa.addEventListener("input", pesquisarAluno);
+// MUDANÇA: Só adiciona o evento de digitação se o campo de pesquisa existir na página atual
+if (pesquisa) {
+    pesquisa.addEventListener("input", pesquisarAluno);
+}
 
 function pesquisarAluno() {
 
@@ -92,4 +107,30 @@ function pesquisarAluno() {
     );
 
     adicionarTabela(alunosFiltrados);
+}
+
+function salvarDados() {
+    localStorage.setItem("alunos", JSON.stringify(alunos));
+    adicionarTabela();
+    calcularEstatisticas();
+}
+
+function calcularEstatisticas() {
+    const total = alunos.length;
+    let media = 0;
+
+    if (total > 0) {
+        const somaIdades = alunos.reduce((acumulador, usuario) => {
+            return acumulador + usuario.idade;
+        }, 0);
+
+        media = (somaIdades / total).toFixed(1);
+    }
+
+    // MUDANÇA: Só atualiza os textos na tela se os elementos existirem na página atual
+    const totalAlunosEl = document.getElementById('totalAlunos');
+    const mediaIdadeEl = document.getElementById('mediaIdade');
+
+    if (totalAlunosEl) totalAlunosEl.textContent = total;
+    if (mediaIdadeEl) mediaIdadeEl.textContent = media;
 }

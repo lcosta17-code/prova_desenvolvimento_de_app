@@ -1,0 +1,50 @@
+table{
+  width: 100%;
+  border-collapse: collapse; /* Remove bordas duplas */
+  margin: 20px 0;
+  font-family: sans-serif;
+  font-size: 16px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+thead tr {
+  background-color: #747474;
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+}
+
+/* Espaçamento interno das células */
+th, td {
+  padding: 12px 15px;
+}
+
+/* Linhas do corpo da tabela (border-bottom fina) */
+tbody tr {
+  border-bottom: 1px solid #dddddd;
+  background-color: white;
+}
+
+
+.Mensagem{
+    display: none;
+}
+
+#pesquisa {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px 18px;
+    font-size: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #ffffff;
+    margin-bottom: 30px;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+#pesquisa:focus {
+    border-color: #009879;
+    box-shadow: 0 4px 12px rgba(0, 152, 121, 0.12);
+}
